@@ -29,15 +29,15 @@ gh repo create spectra --public --description "SpectraAI - Advanced AI Assistant
 
 # Step 7: Add remote origin
 Write-Host "🔗 Adding remote origin..." -ForegroundColor Yellow
-$username = gh api user --jq .login
-git remote add origin "https://github.com/$username/spectra.git"
+$vesryin = gh api user --jq .login
+git remote add origin "https://github.com/$vesryin/spectra.git"
 
 # Step 8: Push to GitHub
 Write-Host "⬆️ Pushing to GitHub..." -ForegroundColor Yellow
 git push -u origin main
 
 Write-Host "✅ Repository successfully created and pushed to GitHub!" -ForegroundColor Green
-Write-Host "🔗 Repository URL: https://github.com/$username/spectra" -ForegroundColor Green
+Write-Host "🔗 Repository URL: https://github.com/$vesryin/spectra" -ForegroundColor Green
 Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Cyan
 Write-Host "1. Visit your repository on GitHub to verify the upload"

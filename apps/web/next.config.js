@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ["images.clerk.dev"],
+    domains: ['images.clerk.dev'],
   },
   typescript: {
     ignoreBuildErrors: false,
