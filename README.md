@@ -340,4 +340,5 @@ For issues, questions, or suggestions:
 
 ---
 
-**SpectraAI** - Where artificial intelligence meets emotional intelligence. 🌟✨
+**SpectraAI** - Where artificial intelligence meets emotional intelligence. 🌟✨# spectra
+# spectra
