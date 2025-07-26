@@ -1,0 +1,52 @@
+{
+  "name": "spectra-ai-monorepo",
+  "version": "2.0.0",
+  "description": "🧠 SpectraAI - Advanced AI Assistant with Emotional Intelligence (2025 Edition)",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "spectra-ui"
+  ],
+  "engines": {
+    "node": ">=20.0.0",
+    "python": ">=3.12.0"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:ui\"",
+    "dev:api": "cd spectra-api && python -m uvicorn src.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:ui": "cd spectra-ui && npm run dev",
+    "build": "npm run build:ui",
+    "build:ui": "cd spectra-ui && npm run build",
+    "preview": "cd spectra-ui && npm run preview",
+    "setup": "npm install && cd spectra-ui && npm install",
+    "clean": "rimraf **/node_modules **/dist **/.svelte-kit",
+    "test": "npm run test:api && npm run test:ui",
+    "test:api": "cd spectra-api && python -m pytest",
+    "test:ui": "cd spectra-ui && npm run test",
+    "lint": "npm run lint:api && npm run lint:ui",
+    "lint:api": "cd spectra-api && python -m ruff check src/",
+    "lint:ui": "cd spectra-ui && npm run lint",
+    "deploy:api": "echo 'Deploy to Railway.app or Render'",
+    "deploy:ui": "echo 'Deploy to Cloudflare Pages or Vercel'"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.5"
+  },
+  "keywords": [
+    "ai",
+    "fastapi",
+    "svelte",
+    "openhermes",
+    "emotional-intelligence",
+    "personality",
+    "memory",
+    "llm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/spectra-ai.git"
+  },
+  "license": "MIT",
+  "author": "SpectraAI Team"
+}

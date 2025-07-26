@@ -69,7 +69,7 @@ class LocalAISetup:
         try:
             if self.system == "windows":
                 logger.info("Please download and install Ollama from: https://ollama.ai/download/windows")
-                logger.info("After installation, run: ollama pull llama2")
+                logger.info("After installation, run: ollama pull openhermes")
                 return False
             
             elif self.system == "darwin":  # macOS
@@ -100,9 +100,9 @@ class LocalAISetup:
             return False
         
         models = [
-            "llama2",           # General purpose model
-            "codellama",        # Code-focused model
-            "mistral"           # Alternative model
+            "openhermes",       # OpenHermes 2.5 - Best conversation model (RECOMMENDED)
+            "llama3.2:3b",      # LLaMA 3.2 3B - Modern, fast alternative 
+            "mistral"           # Mistral 7B - Alternative model
         ]
         
         logger.info("📥 Pulling Ollama models...")
@@ -198,7 +198,7 @@ AI_PROVIDER=local
 
 # Ollama Configuration (for local Llama models)
 OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=llama2
+OLLAMA_MODEL=openhermes
 
 # Hugging Face Configuration (for free local models)
 HUGGINGFACE_MODEL=microsoft/DialoGPT-small
