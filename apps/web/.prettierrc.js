@@ -1,90 +1,194 @@
 /**
- * Prettier Configuration for SpectraAI Frontend
+ * 🎨 Prettier Configuration for SpectraAI Frontend
  * Modern formatting rules following 2025 best practices
  *
+ * Philosophy:
+ * - Consistency over personal preference
+ * - Optimized for team collaboration and readability
+ * - Framework-specific optimizations (React, Next.js, TypeScript)
+ * - File-type specific formatting for better maintainability
+ * - CI/CD integration friendly
+ *
  * Features:
- * - Consistent code formatting across the project
- * - Optimized for readability and maintainability
- * - Compatible with ESLint and team workflows
- * - File-specific overrides for different formats
+ * - Adaptive line lengths based on file type
+ * - Context-aware formatting for different languages
+ * - Team workflow optimization
+ * - Editor-agnostic configuration
+ * - Performance optimized for large codebases
+ *
+ * Maintenance:
+ * - Overrides are organized by file type
+ * - Comments explain formatting decisions
+ * - Compatible with ESLint and other tools
+ * - Easily extendable for new file types
  */
 
 module.exports = {
-  // Core formatting rules
+  // ===== CORE FORMATTING RULES =====
+  // Semicolons for explicit statement termination
   semi: true,
+
+  // Trailing commas improve git diffs and future-proof object literals
   trailingComma: 'es5',
+
+  // Single quotes for consistency and readability
   singleQuote: true,
+
+  // 80 characters - optimal for code review and side-by-side editing
   printWidth: 80,
+
+  // 2 spaces for clean, consistent indentation
   tabWidth: 2,
   useTabs: false,
+
+  // LF line endings for cross-platform compatibility
   endOfLine: 'lf',
 
-  // JSX and React specific
+  // ===== REACT & JSX SPECIFIC =====
+  // Single quotes in JSX for consistency with JavaScript
   jsxSingleQuote: true,
+
+  // Bracket formatting for better readability
   bracketSpacing: true,
   bracketSameLine: false,
+
+  // Arrow function parentheses only when necessary
   arrowParens: 'avoid',
 
-  // Advanced formatting
+  // ===== ADVANCED FORMATTING OPTIONS =====
+  // Embedded language formatting (CSS-in-JS, etc.)
   embeddedLanguageFormatting: 'auto',
+
+  // HTML whitespace handling for proper rendering
   htmlWhitespaceSensitivity: 'css',
+
+  // Pragma handling for conditional formatting
   insertPragma: false,
-  proseWrap: 'preserve',
-  quoteProps: 'as-needed',
   requirePragma: false,
+
+  // Prose formatting for documentation
+  proseWrap: 'preserve',
+
+  // Quote properties only when necessary
+  quoteProps: 'as-needed',
+
+  // Vue.js specific (for potential future use)
   vueIndentScriptAndStyle: false,
 
-  // File-specific overrides for optimal formatting
+  // ===== FILE-SPECIFIC OVERRIDES =====
   overrides: [
-    // Markdown files - optimized for documentation
+    // ===== MARKDOWN FILES =====
+    // Documentation and README files
     {
-      files: '*.md',
+      files: ['*.md', '*.mdx'],
       options: {
         printWidth: 100,
         proseWrap: 'always',
         tabWidth: 2,
+        // Preserve emphasis markers
+        embeddedLanguageFormatting: 'auto',
       },
     },
 
-    // JSON files - compact but readable
+    // ===== JSON FILES =====
+    // Configuration and data files
     {
       files: ['*.json', '*.jsonc'],
       options: {
         printWidth: 100,
         tabWidth: 2,
+        // Keep JSON compact but readable
+        trailingComma: 'none',
       },
     },
 
-    // YAML files - standard indentation
+    // ===== YAML FILES =====
+    // CI/CD and configuration files
     {
       files: ['*.yml', '*.yaml'],
       options: {
         tabWidth: 2,
-        singleQuote: false,
+        singleQuote: false, // YAML prefers double quotes
+        // Maintain YAML structure integrity
+        proseWrap: 'preserve',
       },
     },
 
-    // Configuration files - more lenient line length
+    // ===== CONFIGURATION FILES =====
+    // Build tools and framework configs
     {
       files: [
         '*.config.js',
         '*.config.ts',
         '*.config.mjs',
+        '*.config.cjs',
         '.eslintrc.js',
         'tailwind.config.js',
+        'next.config.js',
+        'jest.config.js',
+        'vite.config.js',
+        'rollup.config.js',
+        'webpack.config.js',
       ],
       options: {
         printWidth: 100,
+        tabWidth: 2,
+        // Configuration files can be slightly longer
+        singleQuote: true,
       },
     },
 
-    // Package.json - maintain standard formatting
+    // ===== PACKAGE.JSON =====
+    // Special handling for package manifests
     {
-      files: 'package.json',
+      files: ['package.json'],
       options: {
         printWidth: 120,
         tabWidth: 2,
+        // Keep dependencies readable
+        trailingComma: 'none',
       },
     },
+
+    // ===== CSS & STYLING FILES =====
+    // Stylesheets and CSS-in-JS
+    {
+      files: ['*.css', '*.scss', '*.sass', '*.less'],
+      options: {
+        printWidth: 120,
+        tabWidth: 2,
+        singleQuote: false, // CSS prefers double quotes
+      },
+    },
+
+    // ===== TypeScript DECLARATION FILES =====
+    // Type definitions
+    {
+      files: ['*.d.ts'],
+      options: {
+        printWidth: 120,
+        // Type declarations can be more verbose
+        trailingComma: 'all',
+      },
+    },
+
+    // ===== SHELL SCRIPTS =====
+    // Automation and deployment scripts
+    {
+      files: ['*.sh', '*.bash'],
+      options: {
+        printWidth: 120,
+        tabWidth: 4, // Shell scripts often use 4 spaces
+        useTabs: false,
+      },
+    },
+  ],
+
+  // ===== PLUGIN CONFIGURATIONS =====
+  // Future plugin support
+  plugins: [
+    // Plugins will be added here as needed
+    // '@prettier/plugin-xml',
+    // 'prettier-plugin-tailwindcss',
   ],
 };

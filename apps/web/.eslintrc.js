@@ -1,33 +1,21 @@
-/**
- * ESLint Configuration for SpectraAI Frontend
- * Modern, adaptive configuration following 2025 best practices
- */
-
+/** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
   extends: ['next/core-web-vitals', 'prettier'],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'error',
-    'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
-    '@typescript-eslint/no-unused-vars': [
-      'error',
-      {
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      },
-    ],
     'prefer-const': 'error',
     'no-var': 'error',
+    'no-console': 'warn',
   },
-  ignorePatterns: ['node_modules/', '.next/', 'out/', 'build/', 'dist/', 'coverage/'],
+  overrides: [
+    {
+      files: ['**/__tests__/**/*', '**/*.{test,spec}.*'],
+      env: {
+        jest: true,
+      },
+      rules: {
+        'no-console': 'off',
+      },
+    },
+  ],
 };

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=70.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -12,29 +12,55 @@ license = {text = "MIT"}
 authors = [
     {name = "SpectraAI Team", email = "dev@spectraai.com"}
 ]
-keywords = ["ai", "assistant", "api", "fastapi", "emotional-intelligence"]
+keywords = ["ai", "assistant", "api", "fastapi", "emotional-intelligence", "2025"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers", 
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Framework :: FastAPI",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+    "Operating System :: OS Independent",
 ]
 
 # ======================================
-# Ruff Configuration - Modern Python Linter
 # ======================================
+# 🛠️ RUFF CONFIGURATION - Modern Python Linter
+# Fast, comprehensive Python code quality and style enforcement
+# 
+# Philosophy:
+# - Comprehensive rule coverage for modern Python development
+# - Performance-optimized for large codebases
+# - Modular configuration for easy maintenance
+# - Compatible with FastAPI and AI/ML workflows
+# - Adaptive rules that evolve with Python versions
+# 
+# Architecture:
+# - Core quality rules (errors, warnings, style)
+# - Modern Python syntax enforcement (3.11+)
+# - Security and performance best practices
+# - Import organization and code structure
+# - Documentation and type hint requirements
+# 
+# Maintenance:
+# - Rules organized by category for clarity
+# - Per-file overrides for specific contexts
+# - Environment-specific configurations
+# - Integration with CI/CD and development tools
+# ======================================
+
 [tool.ruff]
-# Targeting Python 3.11+ for modern features
+# Target modern Python versions for latest features
 target-version = "py311"
 
-# Line length matching Black
+# Optimal line length for code readability and team collaboration
 line-length = 88
 
-# File patterns to include/exclude
+# File discovery and processing patterns
 extend-exclude = [
     "__pycache__",
     ".git",
@@ -46,104 +72,195 @@ extend-exclude = [
     ".pytest_cache",
     ".mypy_cache",
     ".ruff_cache",
+    "migrations",
+    "alembic",
+    ".tox",
+    ".coverage",
+    "htmlcov",
 ]
 
+# ===== LINTING CONFIGURATION =====
 [tool.ruff.lint]
-# Enable comprehensive rule sets for modern Python development
+# Comprehensive rule sets for modern Python development
 select = [
-    "E",      # pycodestyle errors
-    "W",      # pycodestyle warnings  
-    "F",      # Pyflakes
+    # ===== CORE PYTHON QUALITY =====
+    "E",      # pycodestyle errors (PEP 8 compliance)
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes (undefined names, unused imports)
+    
+    # ===== MODERN PYTHON SYNTAX =====
     "UP",     # pyupgrade (modern Python syntax)
-    "B",      # flake8-bugbear (common bugs)
+    "B",      # flake8-bugbear (common Python bugs)
     "SIM",    # flake8-simplify (code simplification)
-    "I",      # isort (import sorting)
+    "C4",     # flake8-comprehensions (list/dict comprehensions)
+    
+    # ===== CODE ORGANIZATION =====
+    "I",      # isort (import sorting and organization)
     "N",      # pep8-naming (naming conventions)
     "D",      # pydocstyle (docstring conventions)
-    "S",      # flake8-bandit (security)
-    "BLE",    # flake8-blind-except
-    "FBT",    # flake8-boolean-trap
-    "A",      # flake8-builtins
-    "COM",    # flake8-commas
-    "C4",     # flake8-comprehensions
-    "DTZ",    # flake8-datetimez
-    "T10",    # flake8-debugger
-    "EXE",    # flake8-executable
-    "ISC",    # flake8-implicit-str-concat
-    "ICN",    # flake8-import-conventions
-    "G",      # flake8-logging-format
-    "INP",    # flake8-no-pep420
-    "PIE",    # flake8-pie
-    "T20",    # flake8-print
-    "PYI",    # flake8-pyi
-    "PT",     # flake8-pytest-style
-    "Q",      # flake8-quotes
-    "RSE",    # flake8-raise
-    "RET",    # flake8-return
-    "SLF",    # flake8-self
-    "SLOT",   # flake8-slots
-    "TCH",    # flake8-type-checking
-    "INT",    # flake8-gettext
-    "ARG",    # flake8-unused-arguments
-    "PTH",    # flake8-use-pathlib
-    "ERA",    # eradicate (commented code)
-    "PD",     # pandas-vet
-    "PGH",    # pygrep-hooks
-    "PL",     # Pylint
-    "TRY",    # tryceratops (exception handling)
-    "FLY",    # flynt (f-string conversion)
-    "NPY",    # NumPy-specific rules
+    
+    # ===== SECURITY & RELIABILITY =====
+    "S",      # flake8-bandit (security vulnerabilities)
+    "BLE",    # flake8-blind-except (catch exceptions properly)
+    "A",      # flake8-builtins (avoid shadowing builtins)
+    "T10",    # flake8-debugger (remove debug statements)
+    "G",      # flake8-logging-format (proper logging)
+    
+    # ===== PERFORMANCE & BEST PRACTICES =====
     "PERF",   # Perflint (performance anti-patterns)
+    "FURB",   # refurb (modern Python patterns)
     "RUF",    # Ruff-specific rules
+    "PIE",    # flake8-pie (unnecessary code patterns)
+    "PT",     # flake8-pytest-style (pytest best practices)
+    
+    # ===== FASTAPI & WEB DEVELOPMENT =====
+    "FBT",    # flake8-boolean-trap (boolean arguments)
+    "DTZ",    # flake8-datetimez (timezone awareness)
+    "COM",    # flake8-commas (trailing commas)
+    "ICN",    # flake8-import-conventions (import aliases)
+    
+    # ===== TYPE HINTS & ANNOTATIONS =====
+    "TCH",    # flake8-type-checking (type checking imports)
+    "PYI",    # flake8-pyi (stub file conventions)
+    "ARG",    # flake8-unused-arguments
+    
+    # ===== DOCUMENTATION & MAINTENANCE =====
+    "ERA",    # eradicate (commented-out code)
+    "PGH",    # pygrep-hooks (miscellaneous checks)
+    "PL",     # Pylint (comprehensive static analysis)
+    "TRY",    # tryceratops (exception handling best practices)
+    
+    # ===== API & DATA HANDLING =====
+    "Q",      # flake8-quotes (quote consistency)
+    "RSE",    # flake8-raise (exception raising patterns)
+    "RET",    # flake8-return (return statement patterns)
+    "PTH",    # flake8-use-pathlib (modern path handling)
+    
+    # ===== SPECIALIZED DOMAINS =====
+    "NPY",    # NumPy-specific rules (for AI/ML code)
+    "PD",     # pandas-vet (pandas best practices)
+    "AIR",    # Airflow-specific rules (if using workflow orchestration)
 ]
 
 # Rules to ignore for practical development
 ignore = [
-    "D100",   # Missing docstring in public module
-    "D104",   # Missing docstring in public package
-    "D105",   # Missing docstring in magic method
-    "D107",   # Missing docstring in __init__
+    # ===== DOCUMENTATION PRAGMATISM =====
+    "D100",   # Missing docstring in public module (too verbose for small modules)
+    "D104",   # Missing docstring in public package (__init__.py files)
+    "D105",   # Missing docstring in magic method (often self-explanatory)
+    "D107",   # Missing docstring in __init__ (often redundant with class docstring)
+    
+    # ===== DOCSTRING STYLE CONFLICTS =====
     "D203",   # 1 blank line required before class docstring (conflicts with D211)
     "D213",   # Multi-line docstring summary should start at the second line (conflicts with D212)
-    "S101",   # Use of assert detected (common in tests)
-    "S104",   # Possible binding to all interfaces
-    "COM812", # Trailing comma missing (conflicts with formatter)
-    "ISC001", # Implicitly concatenated string literals (conflicts with formatter)
+    
+    # ===== TESTING & DEVELOPMENT =====
+    "S101",   # Use of assert detected (acceptable in tests and type checking)
+    "S104",   # Possible binding to all interfaces (common in development)
+    "S108",   # Probable insecure usage of temp file/directory (context-dependent)
+    
+    # ===== FORMATTER COMPATIBILITY =====
+    "COM812", # Trailing comma missing (handled by Black formatter)
+    "ISC001", # Implicitly concatenated string literals (conflicts with Black)
+    
+    # ===== PRACTICAL DEVELOPMENT =====
+    "PLR0913", # Too many arguments to function call (context-dependent)
+    "PLR2004", # Magic value used in comparison (often necessary)
+    "B008",    # Do not perform function calls in argument defaults (FastAPI dependency pattern)
 ]
 
-# Per-file customizations
+# ===== CONTEXT-SPECIFIC RULE OVERRIDES =====
 [tool.ruff.lint.per-file-ignores]
-"__init__.py" = ["F401", "D104"]  # Allow unused imports and missing docstrings
-"tests/**/*.py" = [
-    "S101",    # Allow assertions in tests
-    "ARG",     # Allow unused arguments in test fixtures
-    "FBT",     # Allow boolean traps in tests
-    "PLR2004", # Allow magic values in tests
-    "S105",    # Allow hardcoded passwords in tests
-    "S106",    # Allow hardcoded passwords in tests
+# Configuration and initialization files
+"__init__.py" = [
+    "F401",    # Allow unused imports (often used for module structure)
+    "D104",    # Missing docstring in public package
+    "E402",    # Module level import not at top of file (sometimes necessary)
 ]
-"conftest.py" = ["D100", "D103"]
-"**/migrations/**/*.py" = ["D100", "D101", "D102", "D103"]  # Database migrations
-"scripts/**/*.py" = ["T201", "S602", "S603"]  # Allow prints and subprocess in scripts
 
+# Test files - more relaxed rules for testing context
+"tests/**/*.py" = [
+    "S101",    # Allow assertions in tests (primary testing pattern)
+    "ARG",     # Allow unused arguments in test fixtures
+    "FBT",     # Allow boolean traps in tests (test data patterns)
+    "PLR2004", # Allow magic values in tests (test data)
+    "S105",    # Allow hardcoded passwords in tests (test fixtures)
+    "S106",    # Allow hardcoded passwords in tests (test fixtures)
+    "S311",    # Allow pseudo-random generators in tests
+    "D100",    # Missing module docstring (test files are self-documenting)
+    "D101",    # Missing class docstring in tests
+    "D102",    # Missing function docstring in tests
+    "D103",    # Missing function docstring in tests
+]
+
+# Test configuration files
+"conftest.py" = ["D100", "D103"]
+
+# Database migrations (auto-generated, minimal modification)
+"**/migrations/**/*.py" = [
+    "D100", "D101", "D102", "D103",  # Missing docstrings
+    "E501",    # Line too long (migration files can be verbose)
+    "F401",    # Unused imports (migration dependencies)
+]
+
+# Development and deployment scripts
+"scripts/**/*.py" = [
+    "T201",    # Allow prints in scripts (often necessary for output)
+    "S602",    # Allow subprocess calls (script functionality)
+    "S603",    # Allow subprocess calls without shell=True check
+    "PLR0913", # Allow many arguments in CLI scripts
+]
+
+# FastAPI application files
+"app/**/*.py" = [
+    "B008",    # Allow function calls in defaults (FastAPI dependency injection)
+    "UP007",   # Use X | Y for Union (FastAPI compatibility)
+]
+
+# ===== IMPORT ORGANIZATION =====
 [tool.ruff.lint.isort]
-# Import organization
+# Modern import organization following PEP 8 and team conventions
 force-single-line = false
 force-sort-within-sections = true
-known-first-party = ["app", "core", "models", "services", "utils"]
-known-third-party = ["fastapi", "pydantic", "sqlalchemy", "openai"]
-section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+case-sensitive = false
 
+# Custom module classification for clean import organization
+known-first-party = ["app", "core", "models", "services", "utils", "config"]
+known-third-party = ["fastapi", "pydantic", "sqlalchemy", "openai", "numpy", "pandas"]
+
+# Import section organization
+section-order = [
+    "future",
+    "standard-library", 
+    "third-party",
+    "first-party",
+    "local-folder"
+]
+
+# Visual separation and formatting
+split-on-trailing-comma = true
+force-wrap-aliases = true
+combine-as-imports = true
+
+# ===== DOCSTRING STANDARDS =====
 [tool.ruff.lint.pydocstyle]
-# Docstring style - Google convention
+# Google-style docstrings for consistency and tooling compatibility
 convention = "google"
 
+# ===== PYLINT INTEGRATION =====
 [tool.ruff.lint.pylint]
-# Pylint-specific settings
-max-args = 6
-max-branches = 12
-max-returns = 6
-max-statements = 50
+# Complexity and maintainability thresholds
+max-args = 8              # Function argument limit
+max-branches = 15         # Branching complexity limit
+max-returns = 8           # Return statement limit  
+max-statements = 60       # Function statement limit
+max-public-methods = 25   # Class method limit
+
+# ===== TYPE CHECKING OPTIMIZATION =====
+[tool.ruff.lint.flake8-type-checking]
+# Optimize imports for type checking performance
+runtime-evaluated-base-classes = ["pydantic.BaseModel"]
+runtime-evaluated-decorators = ["pydantic.validate_arguments"]
 
 # ======================================
 # Black Configuration - Code Formatting

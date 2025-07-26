@@ -12,10 +12,11 @@
     "node": ">=20.0.0",
     "npm": ">=10.0.0"
   },
-  "packageManager": "npm@10.5.0",
+  "packageManager": "npm@10.8.0",
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev", 
+    "start": "turbo start",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "format": "turbo format",
@@ -24,39 +25,99 @@
     "test": "turbo test",
     "test:watch": "turbo test:watch",
     "test:coverage": "turbo test:coverage",
+    "test:ui": "turbo test:ui",
     "clean": "turbo clean && rm -rf node_modules .turbo",
     "db:generate": "cd apps/api && prisma generate",
     "db:push": "cd apps/api && prisma db push",
     "db:studio": "cd apps/api && prisma studio",
+    "db:migrate": "cd apps/api && prisma migrate dev",
+    "db:reset": "cd apps/api && prisma migrate reset",
     "security:audit": "npm audit --workspaces && cd apps/api && pip-audit",
+    "security:fix": "npm audit fix --workspaces",
     "quality:check": "npm run lint && npm run format:check && npm run type-check",
-    "ci": "npm run quality:check && npm run test"
+    "quality:fix": "npm run lint:fix && npm run format",
+    "ci": "npm run quality:check && npm run test && npm run build",
+    "precommit": "npm run quality:fix && npm run test:ui",
+    "release": "semantic-release",
+    "analyze": "npm run build && npx bundle-analyzer",
+    "docs:build": "typedoc --out docs apps/web",
+    "deps:update": "npm update --workspaces && cd apps/api && pip list --outdated",
+    "deps:check": "npm outdated --workspaces"
   },
   "devDependencies": {
-    "@turbo/gen": "^1.12.4",
-    "@types/node": "^20.11.24",
-    "prettier": "^3.2.5",
-    "turbo": "^1.13.4",
-    "typescript": "^5.4.2"
+    "@turbo/gen": "^2.0.0",
+    "@types/node": "^22.5.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.3.0",
+    "semantic-release": "^24.0.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.6.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "*.py": [
+      "ruff check --fix",
+      "black"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "keywords": [
     "ai",
+    "assistant",
     "nextjs",
     "fastapi",
-    "openhermes",
     "emotional-intelligence",
     "personality",
     "memory",
+    "consciousness",
     "llm",
+    "openai",
+    "typescript", 
+    "python",
+    "monorepo",
+    "turborepo",
     "2025"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Vesryin/spectra.git"
   },
+  "bugs": {
+    "url": "https://github.com/Vesryin/spectra/issues"
+  },
+  "homepage": "https://spectra-ai.dev",
   "license": "MIT",
   "author": {
     "name": "Vesryin",
     "url": "https://github.com/Vesryin"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/Vesryin"
+  },
+  "release": {
+    "branches": ["main"],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator", 
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      "@semantic-release/git"
+    ]
   }
 }

@@ -156,5 +156,8 @@ test-results/
 playwright-report/
 test-results.xml
 
+# Turborepo cache
+.turbo/
+
 # VS Code AI rules (keep this)
 .github\copilot-instructions.md
