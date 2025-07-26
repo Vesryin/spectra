@@ -1,0 +1,52 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting transformers
+  Downloading transformers-4.54.0-py3-none-any.whl.metadata (41 kB)
+Collecting filelock (from transformers)
+  Using cached filelock-3.18.0-py3-none-any.whl.metadata (2.9 kB)
+Collecting huggingface-hub<1.0,>=0.34.0 (from transformers)
+  Downloading huggingface_hub-0.34.1-py3-none-any.whl.metadata (14 kB)
+Collecting numpy>=1.17 (from transformers)
+  Downloading numpy-2.3.2-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting packaging>=20.0 (from transformers)
+  Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pyyaml>=5.1 (from transformers)
+  Using cached PyYAML-6.0.2-cp313-cp313-win_amd64.whl.metadata (2.1 kB)
+Collecting regex!=2019.12.17 (from transformers)
+  Downloading regex-2024.11.6-cp313-cp313-win_amd64.whl.metadata (41 kB)
+Collecting requests (from transformers)
+  Using cached requests-2.32.4-py3-none-any.whl.metadata (4.9 kB)
+Collecting tokenizers<0.22,>=0.21 (from transformers)
+  Downloading tokenizers-0.21.2-cp39-abi3-win_amd64.whl.metadata (6.9 kB)
+Collecting safetensors>=0.4.3 (from transformers)
+  Downloading safetensors-0.5.3-cp38-abi3-win_amd64.whl.metadata (3.9 kB)
+Requirement already satisfied: tqdm>=4.27 in c:\users\thirt\appdata\local\packages\pythonsoftwarefoundation.python.3.13_qbz5n2kfra8p0\localcache\local-packages\python313\site-packages (from transformers) (4.67.1)
+Collecting fsspec>=2023.5.0 (from huggingface-hub<1.0,>=0.34.0->transformers)
+  Using cached fsspec-2025.7.0-py3-none-any.whl.metadata (12 kB)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in c:\users\thirt\appdata\local\packages\pythonsoftwarefoundation.python.3.13_qbz5n2kfra8p0\localcache\local-packages\python313\site-packages (from huggingface-hub<1.0,>=0.34.0->transformers) (4.14.1)
+Requirement already satisfied: colorama in c:\users\thirt\appdata\local\packages\pythonsoftwarefoundation.python.3.13_qbz5n2kfra8p0\localcache\local-packages\python313\site-packages (from tqdm>=4.27->transformers) (0.4.6)
+Collecting charset_normalizer<4,>=2 (from requests->transformers)
+  Using cached charset_normalizer-3.4.2-cp313-cp313-win_amd64.whl.metadata (36 kB)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\thirt\appdata\local\packages\pythonsoftwarefoundation.python.3.13_qbz5n2kfra8p0\localcache\local-packages\python313\site-packages (from requests->transformers) (3.10)
+Collecting urllib3<3,>=1.21.1 (from requests->transformers)
+  Using cached urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\thirt\appdata\local\packages\pythonsoftwarefoundation.python.3.13_qbz5n2kfra8p0\localcache\local-packages\python313\site-packages (from requests->transformers) (2025.7.14)
+Downloading transformers-4.54.0-py3-none-any.whl (11.2 MB)
+   ---------------------------------------- 11.2/11.2 MB 17.1 MB/s eta 0:00:00
+Downloading huggingface_hub-0.34.1-py3-none-any.whl (558 kB)
+   --------------------------------------- 558.8/558.8 kB 14.0 MB/s eta 0:00:00
+Downloading tokenizers-0.21.2-cp39-abi3-win_amd64.whl (2.5 MB)
+   ---------------------------------------- 2.5/2.5 MB 17.7 MB/s eta 0:00:00
+Using cached fsspec-2025.7.0-py3-none-any.whl (199 kB)
+Downloading numpy-2.3.2-cp313-cp313-win_amd64.whl (12.8 MB)
+   ---------------------------------------- 12.8/12.8 MB 20.0 MB/s eta 0:00:00
+Using cached packaging-25.0-py3-none-any.whl (66 kB)
+Using cached PyYAML-6.0.2-cp313-cp313-win_amd64.whl (156 kB)
+Downloading regex-2024.11.6-cp313-cp313-win_amd64.whl (273 kB)
+Downloading safetensors-0.5.3-cp38-abi3-win_amd64.whl (308 kB)
+Using cached filelock-3.18.0-py3-none-any.whl (16 kB)
+Using cached requests-2.32.4-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.2-cp313-cp313-win_amd64.whl (105 kB)
+Using cached urllib3-2.5.0-py3-none-any.whl (129 kB)
+Installing collected packages: urllib3, safetensors, regex, pyyaml, packaging, numpy, fsspec, filelock, charset_normalizer, requests, huggingface-hub, tokenizers, transformers
+
+Successfully installed charset_normalizer-3.4.2 filelock-3.18.0 fsspec-2025.7.0 huggingface-hub-0.34.1 numpy-2.3.2 packaging-25.0 pyyaml-6.0.2 regex-2024.11.6 requests-2.32.4 safetensors-0.5.3 tokenizers-0.21.2 transformers-4.54.0 urllib3-2.5.0
