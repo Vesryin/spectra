@@ -28,6 +28,12 @@ class Settings:
     MAX_TOKENS = 300
     TEMPERATURE = 0.8
     
+    # AI Provider Configuration (Free local AI first!)
+    AI_PROVIDERS = ['ollama', 'local']  # Try Ollama (OpenHermes) first, fall back to local
+    OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+    OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "openhermes")
+    HUGGINGFACE_MODEL = os.getenv("HUGGINGFACE_MODEL", "microsoft/DialoGPT-small")
+    
     # Personality Traits (0.0 to 1.0)
     PERSONALITY_TRAITS = {
         "empathy": 0.9,

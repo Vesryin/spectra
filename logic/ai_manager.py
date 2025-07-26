@@ -38,7 +38,7 @@ class AIManager:
                 },
                 'ollama': {
                     'base_url': getattr(settings, 'OLLAMA_BASE_URL', 'http://localhost:11434'),
-                    'model': getattr(settings, 'OLLAMA_MODEL', 'llama2'),
+                    'model': getattr(settings, 'OLLAMA_MODEL', 'openhermes'),
                     'max_tokens': getattr(settings, 'MAX_TOKENS', 300),
                     'temperature': getattr(settings, 'TEMPERATURE', 0.8)
                 },
