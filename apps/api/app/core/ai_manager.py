@@ -16,6 +16,7 @@ from datetime import datetime
 import json
 
 from pydantic import BaseModel, Field, ConfigDict
+from pydantic_settings import BaseSettings
 import httpx
 
 

@@ -1,0 +1,40 @@
+{
+  "recommendations": [
+    // Core development
+    "ms-python.python",
+    "ms-python.debugpy",
+    "ms-python.black-formatter",
+    "charliermarsh.ruff",
+    
+    // Frontend development
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    
+    // Testing
+    "ms-python.pytest",
+    "orta.vscode-jest",
+    
+    // Database
+    "ms-mssql.mssql",
+    "ckolkman.vscode-postgres",
+    
+    // Git and collaboration
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "ms-vsliveshare.vsliveshare",
+    
+    // Productivity
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+    
+    // AI and development assistance
+    "github.copilot",
+    "github.copilot-chat",
+    
+    // Environment and configuration
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker"
+  ]
+}
